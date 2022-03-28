@@ -34,7 +34,7 @@ docker-compose up --build
 
 ## Manual Testing
 Τo test the api you can do the following:
-1. Enter the sample data in the database from sample_data file
+1. Enter the sample data in the database from the sample_data file
 2. Register some users and then perform the above functionalities
 (For convenience, use the given postman collection)
 
