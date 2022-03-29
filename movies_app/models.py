@@ -17,10 +17,6 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 class Category(models.Model):
     title = models.CharField(max_length=100, unique=True)
 
-    class Meta:
-        #managed = False
-        db_table = "movies_app_category"
-
     def __str__(self):
         return self.title
 
@@ -32,9 +28,6 @@ class Movie(models.Model):
     director = models.CharField(max_length=50, null=True, blank=True)
     genre = models.ManyToManyField(Category)
     available = models.BooleanField(default=True)
-    class Meta:
-        #managed = False
-        db_table = "movies_app_movie"
 
     def __str__(self):
         return self.title
@@ -46,6 +39,3 @@ class Rental(models.Model):
     return_date = models.DateTimeField(null=True)
     paid_amount = models.FloatField(null=True)
 
-    class Meta:
-        #managed = False
-        db_table = "movies_app_rental"
