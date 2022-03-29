@@ -10,13 +10,15 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework import status
 from django.utils import timezone
-
+from django.core.cache import cache
 '''
 Use Case: List all the available movies based on :
     - user query     (search)
     - movie category (filter)
 '''
 class AvailableMovieList(ListAPIView):
+    page_size = 5
+    page_size_query_param = 'page_size'
     permission_classes = [IsAuthenticated]
     serializer_class = MovieListSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter]  
@@ -36,7 +38,16 @@ class MovieDetailsView(ListAPIView):
 
     def get_queryset(self):
         pk = self.kwargs['pk']
-        return Movie.objects.filter(pk=pk)
+        
+        if cache.get(pk):
+            movie = cache.get(pk)
+            print("Data from cache")
+        else:
+            movie = Movie.objects.filter(pk=pk)
+            cache.set(pk,movie)
+            print("Data from db")
+
+        return movie
 
 
 '''

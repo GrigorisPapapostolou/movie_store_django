@@ -32,18 +32,10 @@ docker-compose up --build
 * **Pgadmin4** : web-based GUI tool for postgres (port: 5050)
 * **App** (port: 8000)
 
-## Manual Testing
-Τo test the api you can do the following:
-1. Enter the sample data in the database from the sample_data file
-2. Register some users and then perform the above functionalities
-(For convenience, use the given postman collection)
-
----
-### Enhancements
-* Automated Testing :  In progress
-* Pagination : Done (integration upon request)
-* Throttling : Done (integration upon request)
-
-### Backlog 
-* Caching : cache expensive calculations
-* Multithreading :  process concurrent multiple requests.
+##  Testing
+Τo test the api you can:
+1. run manual tests by registering some users and then perform the above functionalities using the given postman collection
+2. run the automated tests by running 
+```
+python manage.py test 
+```
