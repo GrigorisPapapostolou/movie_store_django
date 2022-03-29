@@ -30,6 +30,7 @@ docker-compose up --build
 2. Executing the above command, the next three containers are created :
 * **Postgres** : postgres database (port: 5432)
 * **Pgadmin4** : web-based GUI tool for postgres (port: 5050)
+* **Redis**    : cache (port: 6379)
 * **App** (port: 8000)
 
 ##  Testing
