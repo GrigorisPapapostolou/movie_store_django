@@ -37,7 +37,7 @@ Executing the above command, the next three containers are created :
 ##  Testing
 Τo test the api you can:
 1. run manual tests by registering some users and then perform the above functionalities using the given postman collection
-2. run the automated tests :
+2. run the automated tests **locally** :
 ```
 python manage.py test 
 ```
