@@ -24,8 +24,12 @@ jobs:
     - name: Perform Migrations
       run: |
         python manage.py makemigrations  
+<<<<<<< HEAD
         python manage.py migrate 
-        
+=======
+        python manage.py migrate movies_app
+>>>>>>> 0e63c21f074afd5e5d78102113e0b952662d6ae9
+
     - name: Run Tests
       run: |
         python manage.py test
