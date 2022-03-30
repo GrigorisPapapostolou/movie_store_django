@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'movie_store.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
-run_env = environ.get('RUN_ENV', 'dev')
+run_env = environ.get('RUN_ENV', 'test')
 
 if run_env == 'dev':
     DATABASES['default'] = {
