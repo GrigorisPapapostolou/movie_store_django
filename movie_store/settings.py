@@ -91,12 +91,26 @@ if run_env == 'dev':
         'HOST': '192.168.0.2',
         'PORT': '5432'
     }
+    CACHES ['default'] = {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://192.168.0.5:6379/1",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        }
+    CELERY_BROKER_URL = "redis://192.168.0.5:6379"
+    CELERY_RESULT_BACKEND = "redis://192.168.0.5:6379"
 else:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3'
     }
-  
+    CACHES ['default'] = {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache_table',
+    }
+    CACHE_MIDDLEWARE_ALIAS = 'default'
+    CACHE_MIDDLEWARE_SECONDS = 600
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -154,13 +168,3 @@ REST_FRAMEWORK = {
     #     'movie-list': '20/day'
     # }
 }
-
-CACHES ['default'] = {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://192.168.0.5:6379/1",
-            "OPTIONS": {
-                "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            }
-        }
-CELERY_BROKER_URL = "redis://192.168.0.5:6379"
-CELERY_RESULT_BACKEND = "redis://192.168.0.5:6379"
