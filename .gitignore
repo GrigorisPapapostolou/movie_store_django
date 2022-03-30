@@ -5,8 +5,6 @@ __pycache__/
 local_settings.py
 db.sqlite3
 build/
-**/migrations/**
-**/**/migrations
 
 # C extensions
 *.so
