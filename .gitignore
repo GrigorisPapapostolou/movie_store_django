@@ -23,6 +23,3 @@ data/
 
 # VirtualEnv
 .venv/
-
-# Developers
-manage.py
