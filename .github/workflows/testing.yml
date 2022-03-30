@@ -24,8 +24,7 @@ jobs:
     - name: Perform Migrations
       run: |
         python manage.py makemigrations  
-        python manage.py migrate --fake-initial 
-        python manage.py migrate
+        python manage.py migrate 
 
     - name: Run Tests
       run: |
