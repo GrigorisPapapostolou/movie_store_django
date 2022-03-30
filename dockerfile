@@ -1,6 +1,6 @@
 FROM python:3
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_DATABASE=default
+ENV RUN_ENV=dev
 WORKDIR /movie_store
 ADD requirements.txt /movie_store/
 RUN pip install -r requirements.txt

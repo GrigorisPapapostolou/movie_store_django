@@ -13,7 +13,7 @@ services:
 
   movie_store_app:
     build: .
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:9000"
+    command: bash -c "python manage.py makemigrations && python manage.py migrate --fake-initial && python manage.py migrate  && python manage.py runserver 0.0.0.0:9000"
     volumes:
       - .:/movie_store
     ports:
