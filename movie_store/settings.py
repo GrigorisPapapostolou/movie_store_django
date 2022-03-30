@@ -163,3 +163,7 @@ CACHES = {
         }
     }
 }
+
+
+CELERY_BROKER_URL = "redis://192.168.0.5:6379"
+CELERY_RESULT_BACKEND = "redis://192.168.0.5:6379"

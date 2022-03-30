@@ -2,6 +2,8 @@ from rest_framework import serializers
 from movies_app.models import  Category, Movie, Rental
 from django.contrib.auth.models import User
 from django.utils import timezone
+from .tasks import calculate_amount
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,8 +23,6 @@ class MovieListSerializer(serializers.HyperlinkedModelSerializer):
         model = Movie
         fields = ['url','title','storyline','created','genre']
 
-def calculate_amount(x):
-     return x * 1.0 if x <= 3 else 3.0 + (x-3) * 0.5
 
 class RentalSerializer(serializers.ModelSerializer):
 
