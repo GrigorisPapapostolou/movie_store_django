@@ -25,7 +25,7 @@ jobs:
       run: |
         python manage.py makemigrations  
         python manage.py migrate --fake-initial 
-        python manage.py migrate
+        python manage.py migrate movies_app
 
     - name: Run Tests
       run: |
