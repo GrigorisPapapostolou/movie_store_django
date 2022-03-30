@@ -1,7 +1,7 @@
 # Online Movie Store
 The project is a simple paradigm of a online video club and it is implemented using Django REST framework.
 
-Below is a Conceptual Model which illustrates all the classes involved in our example :
+Below is a conceptual model which illustrates all the classes involved in our example :
 
 ![This is an image](https://drive.google.com/uc?export=view&id=1i9_1Piphdb6QKqt3cZXAoKhuT1Sjb8S9)
 
@@ -16,10 +16,10 @@ Each **registered** user can :
 - See all available movies based on given category / query
 - See details for a specific movie
 - Rent a movie
-- Return and return a movie
+- Return and pay a movie
 
 ## Set Up
-It is required to have installed the docker-compose and a clone of the project in order to test the api:
+It is required to have installed the **docker-compose** and a clone of the github repo in order to test the api:
 
 1. Go to the project directory and execute the following statement in the cmd:
 
@@ -37,7 +37,7 @@ Executing the above command, the next three containers are created :
 ##  Testing
 Τo test the api you can:
 1. run manual tests by registering some users and then perform the above functionalities using the given postman collection
-2. run the automated tests by running 
+2. run the automated tests :
 ```
 python manage.py test 
 ```
