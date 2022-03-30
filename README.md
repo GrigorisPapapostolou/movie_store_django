@@ -16,12 +16,13 @@ Each **registered** user can :
 - See all available movies based on given category / query
 - See details for a specific movie
 - Rent a movie
-- Return and return a movie
+- Return and pay a movie
 
 ## Set Up
 Requirements : 
 - docker-compose 
 - copy of the repository
+
 
  Go to the project directory and execute the following command:
 
@@ -44,3 +45,4 @@ By executing the mentioned command, the below architecture is created:
 python manage.py test 
 ```
 - **Automated Testing**: use GitHub Actions which is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. I create a workflow at **.github\workflows** that test every pull request to the master branch and every push on develop branch.
+
