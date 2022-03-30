@@ -28,8 +28,8 @@ SECRET_KEY = 'django-insecure-l3fb+=yk0g0tt)8+c%g_h(b098f(q7h$bcf1-7y(!ny9v9)7(q
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
+DATABASES = {}
+CACHES = {}
 # Application definition
 
 INSTALLED_APPS = [
@@ -79,23 +79,24 @@ WSGI_APPLICATION = 'movie_store.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-   'default': {
+
+run_env = environ.get('RUN_ENV', 'dev')
+
+if run_env == 'dev':
+    DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'movies',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '192.168.0.2',
         'PORT': '5432'
-    },
-    'test' : {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
-
-default_database = environ.get('DJANGO_DATABASE', 'default')
-DATABASES['default'] = DATABASES[default_database]
+else:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+    }
+  
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -154,16 +155,12 @@ REST_FRAMEWORK = {
     # }
 }
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://192.168.0.5:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+CACHES ['default'] = {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://192.168.0.5:6379/1",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
         }
-    }
-}
-
-
 CELERY_BROKER_URL = "redis://192.168.0.5:6379"
 CELERY_RESULT_BACKEND = "redis://192.168.0.5:6379"

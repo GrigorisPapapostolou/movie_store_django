@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
-
+from movie_store.settings import run_env
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
@@ -17,7 +17,10 @@ class Category(models.Model):
     title = models.CharField(max_length=100, unique=True)
 
     class Meta:
-        managed = False
+        if run_env == 'dev':
+            managed = False
+        else:
+            managed = True
         db_table = "movies_app_category"
         
     def __str__(self):
@@ -33,7 +36,10 @@ class Movie(models.Model):
     available = models.BooleanField(default=True)
     
     class Meta:
-        managed = False
+        if run_env == 'dev':
+            managed = False
+        else:
+            managed = True
         db_table = "movies_app_movie"
 
     def __str__(self):
@@ -47,4 +53,5 @@ class Rental(models.Model):
     paid_amount = models.FloatField(null=True)
 
     class Meta:
+        managed = True
         db_table = "movies_app_rental"
