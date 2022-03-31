@@ -20,7 +20,7 @@ Each **registered** user can :
 
 ## Set Up
 Requirements : 
-- docker-compose 
+- docker-compose (suggested version 1.92.2) 
 - copy of the repository
 
 
@@ -47,7 +47,7 @@ By executing the mentioned command, the below architecture is created:
 - Create a superuser for the local database (sqlite) : python manage.py createsuperuser
 - Access admin page (http://localhost:8000/admin) to insert sample data
 
-##  Testing
+## Testing
 - **Manual Testing**: run manual tests by registering some users and then perform the above functionalities using the given postman collection
 - **Interactive Testing**: connect to the container that runs the application (**docker exec -it container_id bash**) and then run the following command
 ```
@@ -55,3 +55,8 @@ python manage.py test
 ```
 - **Automated Testing**: use GitHub Actions which is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. I create a workflow at **.github\workflows** that test every pull request to the master branch and every push on develop branch.
 
+## Important Remarks
+- **Migrations** : Django will make migrations for any change to your models or fields - even options that don’t affect the database - as the only way it can reconstruct a field correctly is to have all the changes in the history, and you might need those options in some data migrations later on. **It is higly recommended to delete the content of the migrations folder (except __init__.py) when you change from local development to development using containers and vice versa.** 
+
+- **Docker-Compose** : Depending of the docker-compose version, most likely some warings / error will occur . (e.g. disable logging). 
+- **Dependencies** : optimizations need to be made as to which packages are used and which version is more appropriate.
