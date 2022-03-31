@@ -38,6 +38,15 @@ By executing the mentioned command, the below architecture is created:
 - **Postgres** is a object-relational database system provides reliability and data integrity.
 - **PgAdmin** is a web-based GUI tool used to interact with the Postgres database sessions, both locally and remote servers as well. You can use PGAdmin to perform any sort of database administration required for a Postgres database.
 
+## Local Set Up
+- Create a python virtual environment (py -m venv django_env) and then activate it
+- Install dependencies : pip install -r requirements.txt
+- Perform migrations : 
+    - python manage.py makemigrations
+    - python manage.py migrate
+- Create a superuser for the local database (sqlite) : python manage.py createsuperuser
+- Access admin page (http://localhost:8000/admin) to insert sample data
+
 ##  Testing
 - **Manual Testing**: run manual tests by registering some users and then perform the above functionalities using the given postman collection
 - **Interactive Testing**: connect to the container that runs the application (**docker exec -it container_id bash**) and then run the following command
