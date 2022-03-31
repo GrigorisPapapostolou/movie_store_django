@@ -106,8 +106,7 @@ else:
         'NAME': BASE_DIR / 'db.sqlite3'
     }
     CACHES ['default'] = {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'cache_table',
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
     }
     CACHE_MIDDLEWARE_ALIAS = 'default'
     CACHE_MIDDLEWARE_SECONDS = 600

@@ -11,7 +11,7 @@ build/
 
 # Distribution / packaging
 .Python
-env/
+django_env/
 data/
 
 
